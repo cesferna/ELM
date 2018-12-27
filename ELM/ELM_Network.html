@@ -1,0 +1,247 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module ELM_Network</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>ELM_Network</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/cesferna/Escritorio/Modelos_GITHUB/ELM/ELM_Network.py">/home/cesferna/Escritorio/Modelos_GITHUB/ELM/ELM_Network.py</a></font></td></tr></table>
+    <p><tt>ELM&nbsp;network&nbsp;class&nbsp;for&nbsp;one-step-ahead&nbsp;forecasting&nbsp;time&nbsp;series</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="pywt.html">pywt</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="ELM_Network.html#ELM_Network">ELM_Network</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ELM_Network">class <strong>ELM_Network</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>ELM&nbsp;class<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ELM_Network-__init__"><strong>__init__</strong></a>(self, inp, hid, ac_function)</dt><dd><tt>Class&nbsp;contructor&nbsp;method&nbsp;<br>
+&nbsp;<br>
+Building&nbsp;a&nbsp;ELM&nbsp;network&nbsp;instance<br>
+Attributes:<br>
+---------------------------------------------------------<br>
+inputs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;number&nbsp;of&nbsp;input&nbsp;neurons&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+hiddens&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;number&nbsp;of&nbsp;hidden&nbsp;neurons<br>
+fo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;activation&nbsp;function<br>
+num_params&nbsp;&nbsp;--&nbsp;number&nbsp;of&nbsp;parameters&nbsp;of&nbsp;the&nbsp;model<br>
+w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;input-hidden&nbsp;matrix&nbsp;(fixed)<br>
+bias&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;bias&nbsp;term&nbsp;vector<br>
+betas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;hidden-output&nbsp;vector&nbsp;(to&nbsp;optimaze)<br>
+---------------------------------------------------------<br>
+parameters:<br>
+&nbsp;<br>
+inp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;number&nbsp;of&nbsp;input&nbsp;neurons<br>
+hid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;number&nbsp;of&nbsp;hidden&nbsp;neurons<br>
+ac_function&nbsp;--&nbsp;type&nbsp;of&nbsp;activation&nbsp;function</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-copy"><strong>copy</strong></a>(self)</dt><dd><tt>Copy&nbsp;method&nbsp;for&nbsp;<a href="#ELM_Network">ELM_Network</a>&nbsp;class<br>
+return&nbsp;an&nbsp;instace&nbsp;of&nbsp;<a href="#ELM_Network">ELM_Network</a>&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-copy_network"><strong>copy_network</strong></a>(self, net)</dt><dd><tt>Copy&nbsp;method&nbsp;from&nbsp;the&nbsp;other&nbsp;ELM_network&nbsp;object<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+net&nbsp;&nbsp;&nbsp;--&nbsp;an&nbsp;ELM_network&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-d_output"><strong>d_output</strong></a>(self, entrada, minimo, maximo)</dt><dd><tt>denormalize&nbsp;the&nbsp;output&nbsp;of&nbsp;the&nbsp;network</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-dnorm_forward_pass"><strong>dnorm_forward_pass</strong></a>(self, entrada)</dt><dd><tt>denormalize&nbsp;the&nbsp;output&nbsp;of&nbsp;the&nbsp;network&nbsp;for&nbsp;a&nbsp;input&nbsp;vector</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-dnorm_output"><strong>dnorm_output</strong></a>(self, out)</dt><dd><tt>denormalize&nbsp;the&nbsp;output&nbsp;of&nbsp;the&nbsp;network<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+output&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;a&nbsp;network&nbsp;output<br>
+---------------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+return&nbsp;the&nbsp;denormalize&nbsp;output&nbsp;(value&nbsp;in&nbsp;the&nbsp;original&nbsp;scale)</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-dnorm_targets"><strong>dnorm_targets</strong></a>(self, targets)</dt><dd><tt>denormalize&nbsp;the&nbsp;targets&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-forward_pass"><strong>forward_pass</strong></a>(self, entrada)</dt><dd><tt>Apply&nbsp;a&nbsp;forward-pass&nbsp;throught&nbsp;the&nbsp;network<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;an&nbsp;input&nbsp;vector&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+---------------------------------------------------------<br>
+&nbsp;<br>
+return&nbsp;the&nbsp;network&nbsp;output&nbsp;(float)</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-from_file"><strong>from_file</strong></a>(self, filename)</dt><dd><tt>Load&nbsp;the&nbsp;network&nbsp;topology&nbsp;from&nbsp;file<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------<br>
+filename&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;file&nbsp;to&nbsp;load&nbsp;the&nbsp;<a href="#ELM_Network">ELM_Network</a>&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-get_betas"><strong>get_betas</strong></a>(self)</dt><dd><tt>obtaining&nbsp;a&nbsp;copy&nbsp;of&nbsp;beta&nbsp;coefficients&nbsp;<br>
+return&nbsp;a&nbsp;numpy&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-get_bias"><strong>get_bias</strong></a>(self)</dt><dd><tt>obtaining&nbsp;a&nbsp;copy&nbsp;of&nbsp;bias&nbsp;coefficients<br>
+return&nbsp;a&nbsp;numpy&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-get_input_matrix"><strong>get_input_matrix</strong></a>(self)</dt><dd><tt>obtaining&nbsp;a&nbsp;copy&nbsp;of&nbsp;input-hidden&nbsp;matrix<br>
+return&nbsp;a&nbsp;numpy&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-get_max"><strong>get_max</strong></a>(self)</dt><dd><tt>obtaining&nbsp;the&nbsp;maximum&nbsp;values&nbsp;of&nbsp;each&nbsp;input&nbsp;vector&nbsp;component<br>
+return&nbsp;a&nbsp;numpy&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-get_min"><strong>get_min</strong></a>(self)</dt><dd><tt>obtaining&nbsp;the&nbsp;mamimum&nbsp;values&nbsp;of&nbsp;each&nbsp;input&nbsp;vector&nbsp;component<br>
+return&nbsp;a&nbsp;numpy&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-get_min_max"><strong>get_min_max</strong></a>(self)</dt><dd><tt>obtaining&nbsp;a&nbsp;copy&nbsp;of&nbsp;minimum&nbsp;and&nbsp;maximum&nbsp;values&nbsp;<br>
+return&nbsp;two&nbsp;numpy&nbsp;arrays</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-get_topology"><strong>get_topology</strong></a>(self)</dt><dd><tt>Obtain&nbsp;the&nbsp;network&nbsp;topology<br>
+return&nbsp;a&nbsp;tuple&nbsp;(num_inputs,num_hidden_ac_function)</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-normalizar"><strong>normalizar</strong></a>(self, data, p)</dt><dd><tt>Normalize&nbsp;the&nbsp;input&nbsp;vectors&nbsp;to&nbsp;interval&nbsp;(-0.5,0.5)<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;a&nbsp;time&nbsp;series<br>
+p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;number&nbsp;of&nbsp;lags&nbsp;&nbsp;&nbsp;<br>
+---------------------------------------------------------<br>
+&nbsp;<br>
+return&nbsp;two&nbsp;numpy&nbsp;arrays:&nbsp;inputs&nbsp;and&nbsp;targets</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-s_forward_pass"><strong>s_forward_pass</strong></a>(self, entrada)</dt><dd><tt>Processing&nbsp;the&nbsp;input&nbsp;vector&nbsp;until&nbsp;the&nbsp;hidden-layer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;an&nbsp;input&nbsp;vector<br>
+&nbsp;<br>
+---------------------------------------------------------<br>
+&nbsp;<br>
+return&nbsp;a&nbsp;numpy&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-set_betas"><strong>set_betas</strong></a>(self, b, b0)</dt><dd><tt>Setting&nbsp;new&nbsp;values&nbsp;for&nbsp;betas&nbsp;coefficients<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+b&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;numpy&nbsp;array&nbsp;with&nbsp;new&nbsp;beta&nbsp;values<br>
+b0&nbsp;&nbsp;--&nbsp;&nbsp;a&nbsp;float&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-set_bias"><strong>set_bias</strong></a>(self, b)</dt><dd><tt>Setting&nbsp;new&nbsp;value&nbsp;for&nbsp;bias&nbsp;term<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+b&nbsp;&nbsp;--&nbsp;&nbsp;the&nbsp;new&nbsp;value&nbsp;to&nbsp;replace</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-set_input_matrix"><strong>set_input_matrix</strong></a>(self, m)</dt><dd><tt>Setting&nbsp;new&nbsp;values&nbsp;for&nbsp;input-hidden&nbsp;matrix<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+m&nbsp;&nbsp;--&nbsp;&nbsp;numpy&nbsp;array&nbsp;with&nbsp;new&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-set_min_max"><strong>set_min_max</strong></a>(self, v_min, v_max)</dt><dd><tt>Setting&nbsp;new&nbsp;values&nbsp;for&nbsp;minimum&nbsp;and&nbsp;maximum&nbsp;values<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+v_min&nbsp;&nbsp;--&nbsp;&nbsp;numpy&nbsp;array&nbsp;with&nbsp;minimum&nbsp;values<br>
+v_max&nbsp;&nbsp;--&nbsp;&nbsp;numpy&nbsp;array&nbsp;with&nbsp;maximum&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-to_file"><strong>to_file</strong></a>(self, filename)</dt><dd><tt>Save&nbsp;the&nbsp;network&nbsp;topology&nbsp;to&nbsp;file&nbsp;output<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------<br>
+filename&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;output&nbsp;file</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-training"><strong>training</strong></a>(self, entradas, targets)</dt><dd><tt>Training&nbsp;the&nbsp;network&nbsp;using&nbsp;Moore-Penrose&nbsp;Pseudo-inverse<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------<br>
+entradas&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;numpy&nbsp;array&nbsp;with&nbsp;input&nbsp;vectors<br>
+targets&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;numpy&nbsp;array&nbsp;with&nbsp;target&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-training_set"><strong>training_set</strong></a>(self, data, p)</dt><dd><tt>Bulding&nbsp;dataset&nbsp;from&nbsp;the&nbsp;data&nbsp;and&nbsp;p-lags<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+data&nbsp;&nbsp;--&nbsp;a&nbsp;time&nbsp;series<br>
+p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;number&nbsp;of&nbsp;lags<br>
+---------------------------------------------------------<br>
+&nbsp;<br>
+return&nbsp;two&nbsp;numpy&nbsp;arrays:&nbsp;input&nbsp;vectors&nbsp;and&nbsp;targets</tt></dd></dl>
+
+<dl><dt><a name="ELM_Network-training_set_wavelet"><strong>training_set_wavelet</strong></a>(self, data, p, wavelet, mode)</dt><dd><tt>Bulding&nbsp;dataset&nbsp;from&nbsp;the&nbsp;data,&nbsp;p-lags&nbsp;and&nbsp;DWT&nbsp;parameters<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;a&nbsp;time&nbsp;series<br>
+p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;number&nbsp;of&nbsp;lags&nbsp;&nbsp;&nbsp;<br>
+wavelet&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;mother&nbsp;wavelet<br>
+mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;DWT&nbsp;mode<br>
+---------------------------------------------------------<br>
+&nbsp;<br>
+return&nbsp;two&nbsp;numpy&nbsp;arrays:&nbsp;inputs&nbsp;and&nbsp;targets</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-factivacion"><strong>factivacion</strong></a>(x, fa)</dt><dd><tt>Processing&nbsp;the&nbsp;activation&nbsp;function&nbsp;according&nbsp;to&nbsp;x&nbsp;value&nbsp;(integer)<br>
+&nbsp;<br>
+return&nbsp;the&nbsp;activation&nbsp;function&nbsp;applied&nbsp;to&nbsp;x<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;a&nbsp;float&nbsp;value<br>
+fa&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;a&nbsp;interger&nbsp;value&nbsp;(0,1,2,3,4,5)</tt></dd></dl>
+ <dl><dt><a name="-logistica"><strong>logistica</strong></a>(x)</dt><dd><tt>Processing&nbsp;the&nbsp;logistic&nbsp;function&nbsp;&nbsp;1/(1+exp(-x))<br>
+&nbsp;<br>
+return&nbsp;apply&nbsp;the&nbsp;logistic&nbsp;function&nbsp;to&nbsp;input&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+x&nbsp;&nbsp;--&nbsp;&nbsp;a&nbsp;float&nbsp;value</tt></dd></dl>
+ <dl><dt><a name="-metricas"><strong>metricas</strong></a>(entrenado, real)</dt><dd><tt>Forecasting&nbsp;performance&nbsp;metrics.<br>
+Calculating&nbsp;the&nbsp;performance&nbsp;metrics&nbsp;MAE,MSE,RMSE,MAPE&nbsp;and&nbsp;THEIL<br>
+&nbsp;<br>
+return&nbsp;a&nbsp;tuple&nbsp;with&nbsp;the&nbsp;performance&nbsp;metrics&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+parameters:&nbsp;<br>
+---------------------------------------------------------<br>
+entrenado&nbsp;--&nbsp;forecasting&nbsp;values&nbsp;from&nbsp;a&nbsp;model<br>
+real&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;observed&nbsp;values</tt></dd></dl>
+ <dl><dt><a name="-procesar_wavelet"><strong>procesar_wavelet</strong></a>(data, wavelet, mode)</dt><dd><tt>Processing&nbsp;the&nbsp;input&nbsp;vector&nbsp;using&nbsp;DWT&nbsp;from&nbsp;Pywaelets<br>
+Calculate&nbsp;the&nbsp;DWT&nbsp;for&nbsp;each&nbsp;input&nbsp;vector<br>
+&nbsp;<br>
+return&nbsp;the&nbsp;DWT&nbsp;of&nbsp;each&nbsp;input&nbsp;vector.<br>
+&nbsp;<br>
+parameters:<br>
+---------------------------------------------------------<br>
+data&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;input&nbsp;vector&nbsp;matrix<br>
+wavelet&nbsp;--&nbsp;Mother&nbsp;wavelet&nbsp;<br>
+mode&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;DWT&nbsp;mode</tt></dd></dl>
+ <dl><dt><a name="-reproducibility"><strong>reproducibility</strong></a>()</dt><dd><tt>Fix&nbsp;the&nbsp;seed&nbsp;for&nbsp;random&nbsp;number&nbsp;generator&nbsp;in&nbsp;order&nbsp;to&nbsp;reproduce&nbsp;the&nbsp;computational&nbsp;experiments</tt></dd></dl>
+</td></tr></table>
+</body></html>
